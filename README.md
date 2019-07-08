@@ -16,4 +16,5 @@
 ## **项目使用**
 ###  1.cd到server与client文件目录下，执行命令npm install
 ###  2.生成dist文件，执行命令webpack
-###  3.启动Client，执行命令npm run dev
+###  3.启动Client，在client执行命令npm run dev
+###  4.启动Server，在server执行命令node app.js
