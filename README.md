@@ -1,4 +1,13 @@
-使用node.js+Vue.js+webpack做一个报名系统
+
+# **项目使用的是node.js+Vue.js+webpack**
+
+# 环境安装
+## 安装node.js 5.或以上
+### 命令行: node -v 
+#### exp:v10.12.0
+命令行: npm -v
+exp:6.4.1
+
 
 1、安装,server与client文件目录下
 
