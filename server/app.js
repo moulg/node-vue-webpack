@@ -7,17 +7,30 @@ var HttpResult = require('./HttpResult');
 var fileManger = require('./fileManager');
 var crypto = require('crypto');
 var databaseManger = require('./databaseManager');
+var debug = require('debug');
 
 var datasource="file";// file or mysql
 
-// 跨域支持
-app.all('*', (req, res, next) => {
-  const origin = req.headers.origin;
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token,sign');
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS, DELETE');
-  next();
+// // 跨域支持
+// app.all('*', (req, res, next) => {
+//   const origin = req.headers.origin;
+//   res.header('Access-Control-Allow-Origin', origin);
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token,sign');
+//   res.header('Access-Control-Allow-Credentials', true);
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS, DELETE');
+//   next();
+// });
+//设置跨域访问
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token,sign');
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+	res.header("Content-Type", "application/json;charset=utf-8");
+	fibers(function(){
+		next();
+	}).run();
 });
 
 app.get('/getVeryCode',bodyParser.json(),function(req,res){    
@@ -26,6 +39,7 @@ app.get('/getVeryCode',bodyParser.json(),function(req,res){
     if(!checkSign(req,res)){        
         return     
     }
+    //随机一个验证码
     var codeNum = Math.floor(Math.random()*9000)+1000;
     httpResult.code = 1;
     httpResult.data = codeNum;
@@ -66,6 +80,9 @@ app.get('/page/:pageindex/:pagesize',function(req,res){
 
 // md5加密
 function checkSign(req,res){
+    debug.log("IP地址:"+req.headers['host']);
+    debug.log("运营商:"+req.headers['user-agent']);
+
     var appSecret = '!Q@W#E$R';
     var sign;
     var md5Conent
@@ -89,5 +106,3 @@ function checkSign(req,res){
 }
 
 app.listen(3000);
-
-

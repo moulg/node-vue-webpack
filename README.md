@@ -9,9 +9,9 @@
 #### 如上 node.js安装成功
 
 ###  2.安装webpack、webpack-dev-server
-#### npm全局安装
-#### WIN:$npm install wepack -g
-#### MAC:$sudo npm install wepack -g
+#### npm全局安装,cd到跟目录执行以下命令（这里使用的是webpack3.10.0，经测试成功后的版本）
+#### WIN:$npm install wepack@^3.10.0 -g
+#### MAC:$sudo npm install wepack@^3.10.0 -g
 
 ## **项目使用**
 ###  1.cd到server与client文件目录下，执行命令npm install
