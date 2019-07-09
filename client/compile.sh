@@ -1,0 +1,1 @@
+sh npm run build

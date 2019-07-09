@@ -1,6 +1,7 @@
 import {hex_md5,b64_md5} from '../util/md5';
 
 var httpHelper = {};
+// var baseHttpUrl = "http://www.dsexy3545.com:3000/";
 var baseHttpUrl = "http://localhost:3000/";
 var appSecret = '!Q@W#E$R'
 httpHelper.get=function(vueComponent,httpUrl,params,successCallback,errCallback){	

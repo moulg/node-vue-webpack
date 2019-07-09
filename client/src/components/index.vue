@@ -116,7 +116,7 @@ export default{
 		            }            
 		        }         
 	        }, (err)=>{
-	            alert('shi bai')
+	            alert('失败')
 	        })
 
 		}
