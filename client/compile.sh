@@ -1,1 +1,1 @@
-sh npm run build
+sudo npm run build
